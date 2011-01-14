@@ -771,7 +771,7 @@ sub tailN{
 
 tailN($fileName,$lines);
 
-my $fileObj=File::Tail->new(name=>$fileName,maxinterval=>1,interval=>1);
+my $fileObj=File::Tail->new(name=>$fileName,maxinterval=>1,interval=>1,resetafter=>1000000000000,adjustafter=>1000000000000);
 while (defined(my $lineString=$fileObj->read)) {
     if ($maxStackTrace && $state != 2 &&($lineString =~ m/\tat/ || $lineString =~ m/^\t.../)) {
         if($partialExcept > 1){
